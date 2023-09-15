@@ -1,35 +1,43 @@
 import { useState } from 'react';
+import Tab2 from './Tab2.tsx';
+
+enum TAB {
+  FIRST = 1,
+  SECOND = 2,
+  THIRD = 3,
+  FOURTH = 4,
+}
 
 function Tab() {
-  const [activeTab, setActiveTab] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState<TAB>(TAB.FIRST);
 
-  const handleTabClick = (index: number) => {
-    setActiveTab(index);
+  const handleTabClick = (tabNumber: TAB) => {
+    setActiveTab(tabNumber);
   };
 
   return (
-    <div className="w-max">
+    <div className="w-max h-max">
       <div className="flex tab-container text-black">
-        <TabButton onClick={() => handleTabClick(0)} active={activeTab === 0}>
+        <TabButton onClick={() => handleTabClick(TAB.FIRST)} active={activeTab === TAB.FIRST}>
           Tab 1
         </TabButton>
-        <TabButton onClick={() => handleTabClick(1)} active={activeTab === 1}>
+        <TabButton onClick={() => handleTabClick(TAB.SECOND)} active={activeTab === TAB.SECOND}>
           Tab 2
         </TabButton>
-        <TabButton onClick={() => handleTabClick(2)} active={activeTab === 2}>
+        <TabButton onClick={() => handleTabClick(TAB.THIRD)} active={activeTab === TAB.THIRD}>
           Tab 3
         </TabButton>
-        <TabButton onClick={() => handleTabClick(3)} active={activeTab === 3}>
+        <TabButton onClick={() => handleTabClick(TAB.FOURTH)} active={activeTab === TAB.FOURTH}>
           Tab 4
         </TabButton>
       </div>
 
-      <div className="text-black tab-content">
-        {activeTab === 0 && <div>Content for Tab 1</div>}
-        {activeTab === 1 && <div>Content for Tab 2</div>}
-        {activeTab === 2 && <div>Content for Tab 3</div>}
-        {activeTab === 3 && <div>Content for Tab 4</div>}
-      </div>
+      <span className="text-black tab-content">
+        {activeTab === TAB.FIRST && <div>Content for Tab 1</div>}
+        {activeTab === TAB.SECOND && <Tab2 />}
+        {activeTab === TAB.THIRD && <div>Content for Tab 3</div>}
+        {activeTab === TAB.FOURTH && <div>Content for Tab 4</div>}
+      </span>
     </div>
   );
 }
