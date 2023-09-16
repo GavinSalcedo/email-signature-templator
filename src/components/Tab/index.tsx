@@ -16,8 +16,8 @@ function Tab() {
   };
 
   return (
-    <div className="w-max h-max">
-      <div className="flex tab-container text-black">
+    <div className="w-max">
+      <div className="flex tab-container text-white">
         <TabButton onClick={() => handleTabClick(TAB.FIRST)} active={activeTab === TAB.FIRST}>
           Tab 1
         </TabButton>
